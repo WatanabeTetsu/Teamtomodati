@@ -14,7 +14,7 @@
         <form th:action="@{/books/create}" th:object="${bookForm}" method="post">
             <table class="table table-striped talbe-bordered table-condensed">
                 <tr>
-                    <td>タイトル:</td>
+                    <td>機種カテゴリ:</td>
                     <td>
                         <input type="text" name="title" th:field="*{title}" th:errorclass="error-input" />
                         <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error-messages">error!</span>
