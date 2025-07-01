@@ -4,7 +4,7 @@
         <link rel="stylesheet" type="text/css" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
         <link rel="stylesheet" type="text/css"th:href="@{/webjars/bootstrap/5.3.5/css/bootstrap.min.css}" />
         <meta charset="UTF-8" />
-        <title>書籍登録一覧画面</title>
+        <title>設備登録一覧画面</title>
     </head>
     <body>
         <p>
@@ -14,7 +14,7 @@
         <form th:action="@{/books/create}" th:object="${bookForm}" method="post">
             <table class="table table-striped talbe-bordered table-condensed">
                 <tr>
-                    <td>タイトル:</td>
+                    <td>機種カテゴリ:</td>
                     <td>
                         <input type="text" name="title" th:field="*{title}" th:errorclass="error-input" />
                         <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error-messages">error!</span>
