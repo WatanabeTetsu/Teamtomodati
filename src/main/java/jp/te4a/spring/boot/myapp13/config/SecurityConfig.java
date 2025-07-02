@@ -16,32 +16,33 @@ import jp.te4a.spring.boot.myapp13.service.LoginUserDetailsService;
 @EnableWebSecurity
 public class SecurityConfig {
     @Autowired
-    private LoginUserDetailsService loginUserDetailsSrevice;
+    private LoginUserDetailsService loginUserDetailsService;
+
     public void configureAuthenticationManager(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(loginUserDetailsSrevice).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(loginUserDetailsService).passwordEncoder(passwordEncoder());
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
-    {
+
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.formLogin(login -> login
-        .loginProcessingUrl("/login")
-        .loginPage("/loginForm")
-        .defaultSuccessUrl("/books", true)
-        .failureUrl("/loginForm?error")
-        .usernameParameter("username").passwordParameter("password")
-        .permitAll()
+            .loginProcessingUrl("/login")
+            .loginPage("/loginForm")
+            .defaultSuccessUrl("/facilities", true) // 書籍 → 設備
+            .failureUrl("/loginForm?error")
+            .usernameParameter("username").passwordParameter("password")
+            .permitAll()
         ).logout(logout -> logout
-        .logoutSuccessUrl("/loginForm"))
-        .authorizeHttpRequests(authz -> authz
-        .requestMatchers("/webjars/**", "/css/**").permitAll()
-        .requestMatchers("/loginForm").permitAll()
-        .requestMatchers("/users").permitAll()
-        .requestMatchers("/users/create").permitAll()
-        .anyRequest().authenticated()
+            .logoutSuccessUrl("/loginForm")
+        ).authorizeHttpRequests(authz -> authz
+            .requestMatchers("/webjars/**", "/css/**").permitAll()
+            .requestMatchers("/loginForm").permitAll()
+            .requestMatchers("/users").permitAll()
+            .requestMatchers("/users/create").permitAll()
+            .anyRequest().authenticated()
         );
         return http.build();
     }
