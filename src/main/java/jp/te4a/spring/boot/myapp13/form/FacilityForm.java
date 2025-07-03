@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class BookForm {
+public class FacilityForm {
     private Integer id;
     @NotNull
     @Size(min= 3)

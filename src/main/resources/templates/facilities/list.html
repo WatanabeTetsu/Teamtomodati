@@ -11,7 +11,7 @@
             <span sec:authentication="principal.user.username">duke</span>さんログイン中。
         </p>
         <form th:action="@{/logout}" method="post"><input type="submit" class="btn btn-default btn-xs" value="ログアウト" /></form>
-        <form th:action="@{/books/create}" th:object="${bookForm}" method="post">
+        <form th:action="@{/facilities/create}" th:object="${facilityForm}" method="post">
             <table class="table table-striped talbe-bordered table-condensed">
                 <tr>
                     <td>タイトル:</td>
@@ -36,22 +36,22 @@
         </form>
         <hr />
         <table>
-            <tr th:each="book : ${books}">
-                <td th:text="${book.id}">100</td>
-                <td th:text="${book.title}">タイトルＡ</td>
-                <td th:text="${book.writter}">著者Ａ</td>
-                <td th:text="${book.publisher}">出版社Ａ</td>
-                <td th:text="${book.price}">100</td>
+            <tr th:each="facility : ${facilities}">
+                <td th:text="${facility.id}">100</td>
+                <td th:text="${facility.title}">タイトルＡ</td>
+                <td th:text="${facility.writter}">著者Ａ</td>
+                <td th:text="${facility.publisher}">出版社Ａ</td>
+                <td th:text="${facility.price}">100</td>
                 <td>
-                    <form th:action="@{/books/edit}" method="post">
+                    <form th:action="@{/facilities/edit}" method="post">
                         <input type="submit" name="form" value="編集" />
-                        <input type="hidden" name="id" th:value="${book.id}"/>
+                        <input type="hidden" name="id" th:value="${facility.id}"/>
                     </form>
                 </td>
                 <td>
-                    <form th:action="@{/books/delete}" method="post">
+                    <form th:action="@{/facilities/delete}" method="post">
                         <input type="submit" name="form" value="削除" />
-                        <input type="hidden" name="id" th:value="${book.id}"/>
+                        <input type="hidden" name="id" th:value="${facility.id}"/>
                     </form>
                 </td>
             </tr>
