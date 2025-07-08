@@ -13,24 +13,22 @@
         <form th:action="@{/logout}" method="post"><input type="submit" class="btn btn-default btn-xs" value="ログアウト" /></form>
         <form th:action="@{/facilities/create}" th:object="${facilityForm}" method="post">
             <table class="table table-striped talbe-bordered table-condensed">
-                <tr>
-                    <td>タイトル:</td>
-                    <td>
-                        <input type="text" name="title" th:field="*{title}" th:errorclass="error-input" />
-                        <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error-messages">error!</span>
-                    </td>
-                </tr>
-                <tr><td>型番：</td>
-                    <td><input type="text" name="writter" th:field="*{writter}" th:errorclass="error-input" />
-                        <span th:if="${#fields.hasErrors('writter')}" th:errors="*{writter}" class="error-messages">error!</span>
-                    </td>
-                </tr>
+                <tr><td>タイトル：</td><td><input type="text" name="title" /></td></tr>
+                <tr><td>型番：</td><td><input type="text" name="writter" /></td></tr>
                 <tr><td>出版社：</td><td><input type="text" name="publisher" /></td></tr>
-                <tr>
-                    <td>価格：</td><td><input type="text" name="price" th:field="*{price}" th:errorclass="error-input" />
-                        <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="error-messages">error!</span>
-                    </td>
-                </tr>
+                <tr><td>価格：</td><td><input type="text" name="price" /></td></tr>
+
+                <tr><td>品名：</td><td><input type="text" name="pro_name" /></td></tr>
+                <tr><td>型番：</td><td><input type="text" name="model_no" /></td></tr>
+                <tr><td>メーカ：</td><td><input type="text" name="maker" /></td></tr>
+                <tr><td>仕様：</td><td><input type="text" name="siyou" /></td></tr>
+                <tr><td>耐用年数：</td><td><input type="text" name="t_year" /></td></tr>
+                <tr><td>購入日：</td><td><input type="text" name="date" /></td></tr>
+                <tr><td>減価償却：</td><td><input type="text" name="genka_syoukyaku" /></td></tr>
+                <tr><td>使用可能：</td><td><input type="checkbox" name="useable" /></td></tr>
+                <tr><td>貸出可能：</td><td><input type="checkbox" name="lentable" /></td></tr>
+                <tr><td>設置場所：</td><td><input type="text" name="place" /></td></tr>
+                <tr><td>使用期限：</td><td><input type="text" name="limit" /></td></tr>
             </table>
             <input type="submit" value="作成" />
         </form>
